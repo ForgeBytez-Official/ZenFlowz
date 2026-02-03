@@ -1,0 +1,199 @@
+.crystal-evo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 4px 0;
+    padding: 8px 0;
+    user-select: none;
+}
+
+.evo-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 420px;
+    gap: 2px;
+}
+
+.horizon-block {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+}
+
+.horizon-block.down {
+    flex-direction: column-reverse;
+}
+
+.horizon-meta-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4px;
+    height: 12px;
+}
+
+.horizon-tag {
+    font-size: 0.58rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.4;
+    color: var(--color-text-bright);
+}
+
+.horizon-digit {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.horizon-digit .slash,
+.horizon-digit .tot {
+    opacity: 0.15;
+}
+
+.spike-field {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 12px;
+    height: 32px;
+}
+
+.down .spike-field {
+    align-items: flex-start;
+}
+
+.spike-anchor {
+    position: relative;
+    width: 3px;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.down .spike-anchor {
+    align-items: flex-start;
+}
+
+.crystal-spike {
+    width: 100%;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+.next-pulse {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    z-index: 1;
+    filter: blur(2px);
+}
+
+.evo-axis {
+    position: relative;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+}
+
+.axis-glow {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.axis-scanner {
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+    filter: blur(1px);
+}
+
+@media screen and (min-width: 1921px) {
+    .evo-inner {
+        max-width: 600px;
+        gap: 8px;
+    }
+
+    .spike-field {
+        height: 35px;
+        gap: 16px;
+    }
+
+    .horizon-tag {
+        font-size: 0.9rem;
+    }
+
+    .horizon-digit {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .evo-inner {
+        max-width: 300px;
+        gap: 4px;
+    }
+
+    .spike-field {
+        gap: 10px;
+        height: 20px;
+    }
+
+    .spike-anchor {
+        width: 3px;
+    }
+
+    .horizon-tag {
+        font-size: 0.5rem;
+        letter-spacing: 1.5px;
+    }
+
+    .horizon-digit {
+        font-size: 0.65rem;
+    }
+}
+
+/* 5. Landscape Mobile / Split View HUD */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .crystal-evo-container {
+        margin: 0;
+        padding: 5px 0;
+    }
+
+    .evo-inner {
+        max-width: 100%;
+        gap: 2px;
+    }
+
+    .spike-field {
+        height: 22px;
+        /* Increased back for split layout visibility */
+        gap: 12px;
+    }
+
+    .horizon-meta-strip {
+        height: 12px;
+    }
+
+    .horizon-tag {
+        font-size: 0.55rem;
+        display: block;
+        /* Bring back labels as we have more horizontal room in split view */
+    }
+
+    .horizon-digit {
+        font-size: 0.65rem;
+    }
+}

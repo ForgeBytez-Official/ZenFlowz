@@ -1,0 +1,224 @@
+.ambience-control-wrapper {
+    position: relative;
+    z-index: 1000;
+}
+
+.btn-ambience-toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-text-bright);
+    padding: 0;
+    transition: all 0.5s cubic-bezier(0.15, 1, 0.3, 1);
+}
+
+.btn-ambience-toggle:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-bright);
+}
+
+.btn-ambience-toggle.playing {
+    color: var(--color-text-bright);
+    border-color: rgba(123, 166, 170, 0.4);
+    background: rgba(123, 166, 170, 0.08);
+    box-shadow: 0 0 20px rgba(123, 166, 170, 0.2);
+}
+
+.ambience-pulse-ring {
+    position: absolute;
+    inset: -1px;
+    border: 1px solid var(--color-accent-1-hex);
+    border-radius: inherit;
+    opacity: 0;
+    animation: ambience-pulse 1.7s infinite;
+}
+
+@keyframes ambience-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: scale(1.7);
+        opacity: 0;
+    }
+}
+
+.ambience-menu {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 0;
+    background: var(--color-overlay-bg);
+    backdrop-filter: blur(40px) saturate(150%);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 12px;
+    min-width: 420px;
+    box-shadow: 0 20px 60px rgba(0, 0, 10, 0.5);
+}
+
+.ambience-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+}
+
+.ambience-option {
+    position: relative;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--color-text-bright);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 12px 4px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.15, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ambience-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.ambience-option.active {
+    background: rgba(123, 166, 170, 0.15);
+    border-color: rgba(123, 166, 170, 0.4);
+    color: var(--color-accent-1-hex);
+}
+
+.ambience-option-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.ambience-icon-box {
+    opacity: 0.85;
+    transition: all 0.3s ease;
+}
+
+.ambience-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.7;
+}
+
+.active-indicator-bar {
+    position: absolute;
+    bottom: 4px;
+    width: 8px;
+    height: 2px;
+    background: var(--color-accent-1-hex);
+    border-radius: 10px;
+}
+
+/* ==========================================================================
+   4-FRAME RESPONSIVENESS
+   ========================================================================== */
+
+/* 1. TV / UltraWide (2K/4K) */
+@media screen and (min-width: 1921px) {
+    .btn-ambience-toggle {
+        width: 80px;
+        height: 80px;
+    }
+
+    .ambience-menu {
+        min-width: 600px;
+        padding: 24px;
+        bottom: calc(100% + 24px);
+        border-radius: 32px;
+    }
+
+    .ambience-grid {
+        gap: 20px;
+    }
+
+    .ambience-option {
+        padding: 32px 16px;
+        border-radius: 24px;
+    }
+
+    .ambience-label {
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+}
+
+/* 3. Tablet (601px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .btn-ambience-toggle {
+        width: 44px;
+        height: 44px;
+    }
+
+    .ambience-menu {
+        min-width: 320px;
+        padding: 10px;
+        left: -10px;
+    }
+
+    .ambience-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+
+    .ambience-option {
+        padding: 8px 4px;
+        border-radius: 10px;
+    }
+
+    .ambience-label {
+        font-size: 0.6rem;
+    }
+}
+
+/* 4. Mobile Portrait (Below 600px) */
+@media screen and (max-width: 600px) {
+    .ambience-menu {
+        min-width: 280px;
+        bottom: calc(100% + 15px);
+    }
+
+    .ambience-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 5. Landscape Extreme (Mobile Landscape Optimization) */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .btn-ambience-toggle {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .ambience-menu {
+        bottom: 10px;
+        /* Shifted to avoid overlap with split layout */
+        left: 60px;
+        min-width: 450px;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .ambience-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}

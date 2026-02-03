@@ -1,0 +1,280 @@
+.duration-control {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.4s cubic-bezier(0.15, 1, 0.3, 1);
+    width: 100%;
+}
+
+.duration-control:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--accent-color);
+}
+
+.dc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dc-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.duration-control:hover .dc-icon {
+    background: var(--accent-color);
+    color: #000 !important;
+}
+
+.dc-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-text-bright);
+}
+
+/* Horizontal Layout Row */
+.dc-layout-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.dc-stepper {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    padding: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    min-width: 110px;
+    justify-content: space-between;
+}
+
+.step-btn {
+    appearance: none;
+    background: transparent;
+    border: none;
+    color: var(--color-text-bright);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 7px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-btn:hover {
+    background: var(--color-text-bright);
+    color: #000;
+}
+
+.step-display {
+    display: flex;
+    align-items: baseline;
+    gap: 1px;
+}
+
+.step-value {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 950;
+    color: var(--color-text-bright);
+}
+
+.step-unit {
+    font-size: 0.6rem;
+    font-weight: 800;
+    opacity: 0.3;
+}
+
+/* Slider Section */
+.dc-slider-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    padding: 10px 0;
+}
+
+.dc-milestones {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4px;
+    margin-bottom: -12px;
+}
+
+.milestone {
+    font-size: 0.55rem;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    opacity: 0.2;
+}
+
+.dc-slider {
+    appearance: none;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 3px;
+    outline: none;
+    position: relative;
+    z-index: 2;
+    margin: 10px 0;
+}
+
+.dc-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border: 3px solid var(--thumb-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dc-track-ticks {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 2px;
+    right: 2px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.dc-tick {
+    width: 1px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.dc-tick.major {
+    height: 10px;
+    background: var(--accent-color);
+    opacity: 0.5;
+}
+
+.dc-tick.minor {
+    height: 4px;
+    opacity: 0.2;
+}
+
+/* ==========================================================================
+   4-FRAME RESPONSIVENESS
+   ========================================================================== */
+
+/* 1. TV / UltraWide (2K/4K) */
+@media screen and (min-width: 1921px) {
+    .duration-control {
+        padding: 32px;
+        border-radius: 24px;
+    }
+
+    .dc-label {
+        font-size: 1.2rem;
+    }
+
+    .dc-stepper {
+        min-width: 180px;
+        padding: 6px;
+    }
+
+    .step-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .step-value {
+        font-size: 1.8rem;
+    }
+
+    .dc-slider {
+        height: 6px;
+    }
+
+    .dc-slider::-webkit-slider-thumb {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* 3. Tablet (601px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .duration-control {
+        padding: 12px;
+    }
+
+    .dc-layout-row {
+        gap: 12px;
+    }
+
+    .dc-stepper {
+        min-width: 100px;
+    }
+}
+
+/* 4. Mobile Portrait (Below 600px) */
+@media screen and (max-width: 600px) {
+    .duration-control {
+        padding: 8px 10px;
+        border-radius: 12px;
+    }
+
+    .dc-layout-row {
+        gap: 6px;
+    }
+
+    .dc-stepper {
+        min-width: 80px;
+    }
+
+    .dc-label {
+        font-size: 0.65rem;
+    }
+}
+
+/* 5. Landscape Extreme (Mobile Landscape Optimization) */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+
+    /* Optimizing for narrow column in landscape */
+    .duration-control {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .dc-layout-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .dc-stepper {
+        width: 100%;
+    }
+
+    .dc-milestones {
+        display: none;
+    }
+}

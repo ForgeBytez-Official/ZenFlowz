@@ -1,0 +1,144 @@
+.datetime-wrapper {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+    padding: 7px;
+}
+
+.meta-info {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.meta-day {
+    color: var(--color-accent-3-hex);
+}
+
+.meta-date {
+    color: var(--color-accent-2-hex);
+}
+
+.meta-utc {
+    padding: 3px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    opacity: 0.4;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.time-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1;
+}
+
+.time-main-display {
+    font-size: 3rem;
+    font-weight: 950;
+    /* Ultra-bold for focus */
+    letter-spacing: -1.5px;
+    color: var(--color-text-bright);
+    font-variant-numeric: tabular-nums;
+}
+
+.time-sep {
+    animation: pulse-sep 3s infinite;
+}
+
+@keyframes pulse-sep {
+
+    0%,
+    100% {
+        opacity: 0.1;
+    }
+
+    /* Subtler pulse */
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.time-side-stack {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-mono);
+    padding-top: 4px;
+}
+
+.side-seconds {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--color-accent-1-hex);
+    /* Match seconds to accent */
+}
+
+.side-ampm {
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    opacity: 0.2;
+}
+
+/* ==========================================================================
+   4-FRAME RESPONSIVENESS
+   ========================================================================== */
+
+/* 1. TV / UltraWide (2K/4K) */
+@media screen and (min-width: 1921px) {
+    .datetime-wrapper {
+        top: 40px;
+        right: 40px;
+    }
+
+    .time-main-display {
+        font-size: 4.5rem;
+    }
+
+    .meta-info {
+        font-size: 1.4rem;
+    }
+}
+
+/* 3. Tablet (601px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .datetime-wrapper {
+        top: 10px;
+        right: 10px;
+    }
+
+    .time-main-display {
+        font-size: 1.9rem;
+    }
+}
+
+/* 4. Mobile Portrait (Below 600px) */
+@media screen and (max-width: 600px) {
+    .datetime-wrapper {
+        top: 10px;
+        right: 10px;
+        padding: 5px;
+    }
+
+    .time-main-display {
+        font-size: 1.9rem;
+    }
+
+    .meta-info {
+        font-size: 0.7rem;
+    }
+}
