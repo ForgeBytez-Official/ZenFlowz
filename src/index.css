@@ -1,0 +1,247 @@
+@import './design-system/typography.css';
+@import './design-system/colors.css';
+
+:root {
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-sans: 'Outfit', system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+/* --- Global Scrollbar System --- */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Firefox Core */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+@media (min-width: 2500px) {
+    :root {
+        font-size: 24px;
+    }
+
+    #root {
+        max-width: 1800px;
+        padding: 4rem;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans);
+    background: var(--color-bg-base);
+    color: var(--color-text-bright);
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Glass Button Utility */
+.btn-glass {
+    appearance: none;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text);
+    cursor: pointer;
+    font-family: var(--font-sans);
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+#root {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+    #root {
+        padding: 1rem;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    #root {
+        padding: 0.5rem;
+    }
+}
+
+.bottom-left-controls {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 1000;
+}
+
+.bottom-right-controls {
+    position: fixed;
+    bottom: 30px;
+    right: 106px;
+    /* Shifted left to make room for settings (60px) + gap (16px) */
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 1000;
+}
+
+.floating-settings-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 3000;
+    /* Stays on top of everything including sidebar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+}
+
+/* Base Styles for Control Buttons */
+.btn-icon-glass,
+.btn-fullscreen-glass,
+.btn-ambience-toggle,
+.btn-settings-hud {
+    border-radius: 50% !important;
+    transition: all 0.4s cubic-bezier(0.15, 1, 0.3, 1) !important;
+    color: var(--color-text-bright) !important;
+}
+
+.btn-settings-hud {
+    width: 60px;
+    height: 60px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 20px var(--glass-shadow);
+}
+
+.btn-settings-hud:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-bright);
+    transform: rotate(-15deg) scale(1.05);
+    /* Added slight flair for feedback */
+}
+
+.btn-settings-hud.active {
+    color: var(--color-accent-1-hex) !important;
+    border-color: var(--color-accent-1-hex);
+}
+
+@media (max-width: 1024px) {
+    .bottom-left-controls {
+        left: 20px;
+        bottom: 20px;
+    }
+
+    .bottom-right-controls {
+        right: 76px;
+        /* 20px margin + 44px button + 12px gap */
+        bottom: 20px;
+        gap: 12px;
+    }
+
+    .btn-settings-hud {
+        width: 44px;
+        height: 44px;
+    }
+
+    .floating-settings-btn {
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .bottom-left-controls {
+        left: 15px;
+        bottom: 15px;
+    }
+
+    .bottom-right-controls {
+        right: 65px;
+        /* 15px margin + 40px btn + 10px gap */
+        bottom: 15px;
+        gap: 10px;
+    }
+
+    .floating-settings-btn {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .btn-settings-hud {
+        width: 40px !important;
+        height: 40px !important;
+    }
+}
+
+@media (min-width: 1921px) {
+    .bottom-left-controls {
+        left: 60px;
+        bottom: 60px;
+    }
+
+    .bottom-right-controls {
+        right: 164px;
+        /* 60px margin + 80px button + 24px gap */
+        bottom: 60px;
+        gap: 24px;
+    }
+
+    .btn-settings-hud {
+        width: 80px;
+        height: 80px;
+    }
+
+    .floating-settings-btn {
+        right: 60px;
+        bottom: 60px;
+    }
+}

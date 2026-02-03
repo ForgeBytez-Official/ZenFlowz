@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+:root {
+    --font-sans: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-ui-body: 'Inter', system-ui, sans-serif;
+
+    /* Modular heading font variable */
+    --font-heading: var(--font-serif);
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.01em;
+}
+
+/* Utilities for modular overriding */
+.font-sans {
+    font-family: var(--font-sans) !important;
+}
+
+.font-serif {
+    font-family: var(--font-serif) !important;
+}
+
+.font-mono {
+    font-family: var(--font-mono) !important;
+}
+
+.time-digits {
+    font-family: var(--font-mono);
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+.button-text {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}

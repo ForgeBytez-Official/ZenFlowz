@@ -1,0 +1,92 @@
+.version-tag-hud {
+    position: fixed;
+    top: 70px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.v-pill-hud,
+.s-pill-hud {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+}
+
+.version-tag-hud:hover .v-pill-hud {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.v-pill-hud {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.v-pill-hud span {
+    color: var(--color-accent-1-hex);
+    margin-left: 3px;
+    filter: brightness(1.2);
+}
+
+.s-pill-hud {
+    background: rgba(var(--color-accent-1-rgb), 0.03);
+    border: 1px solid rgba(var(--color-accent-1-rgb), 0.15);
+    color: var(--color-accent-1-hex);
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   4-FRAME RESPONSIVENESS
+   ========================================================================== */
+
+/* 1. TV / UltraWide (2K/4K) */
+@media screen and (min-width: 1921px) {
+    .version-tag-hud {
+        top: 160px;
+        left: 50px;
+        gap: 20px;
+    }
+
+    .v-pill-hud,
+    .s-pill-hud {
+        font-size: 1.1rem;
+    }
+}
+
+/* 3. Tablet (601px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .version-tag-hud {
+        top: 65px;
+        left: 25px;
+    }
+}
+
+/* 4. Mobile Portrait (Below 600px) */
+@media screen and (max-width: 600px) {
+    .version-tag-hud {
+        top: 50px;
+        left: 5px;
+        transform: scale(0.9);
+    }
+}
+
+/* 5. Mobile Landscape  */
+@media (max-height: 500px) and (orientation: landscape) {
+    .version-tag-hud {
+        top: 55px;
+        left: 20px;
+        transform: scale(0.7);
+    }
+}
