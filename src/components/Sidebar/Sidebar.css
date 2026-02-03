@@ -1,0 +1,175 @@
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    z-index: 2000;
+}
+
+.sidebar-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    pointer-events: none;
+}
+
+.sidebar-panel {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    pointer-events: auto;
+    background: var(--color-panel-bg);
+    backdrop-filter: blur(60px) saturate(200%);
+    display: flex;
+    flex-direction: column;
+    box-shadow: -20px 0 80px rgba(0, 0, 0, 0.6);
+    will-change: transform;
+    touch-action: pan-y;
+    border-left: 1px solid var(--glass-border);
+}
+
+.main-panel {
+    right: 0;
+    width: 100%;
+    max-width: 440px;
+    z-index: 2002;
+}
+
+.secondary-panel {
+    right: 440px;
+    width: 100%;
+    max-width: 440px;
+    z-index: 2001;
+    background: rgba(15, 16, 20, 0.9);
+}
+
+.sidebar-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 32px;
+}
+
+.sidebar-footer {
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 80px;
+    border-top: 1px solid var(--glass-border);
+}
+
+.sidebar-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: 2px;
+    opacity: 0.4;
+    text-transform: uppercase;
+}
+
+.btn-close-sidebar-footer {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: var(--color-text-bright);
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.15, 1, 0.3, 1);
+}
+
+.btn-close-sidebar-footer:hover {
+    transform: rotate(90deg);
+}
+
+/* ==========================================================================
+   4-FRAME RESPONSIVENESS
+   ========================================================================== */
+
+/* 1. TV / UltraWide (2K/4K) */
+@media screen and (min-width: 1921px) {
+
+    .main-panel,
+    .secondary-panel {
+        max-width: 600px;
+    }
+
+    .secondary-panel {
+        right: 600px;
+    }
+
+    .sidebar-content {
+        padding: 60px;
+    }
+
+    .sidebar-footer {
+        padding: 40px 60px;
+        min-height: 120px;
+    }
+
+    .sidebar-title {
+        font-size: 1rem;
+    }
+}
+
+/* 3. Tablet (601px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .main-panel {
+        max-width: 400px;
+    }
+
+    .secondary-panel {
+        max-width: 400px;
+        right: 400px;
+    }
+
+    .sidebar-content {
+        padding: 24px;
+    }
+}
+
+/* 4. Mobile Portrait (Below 600px) */
+@media screen and (max-width: 600px) {
+
+    .main-panel,
+    .secondary-panel {
+        max-width: 100%;
+        border-left: none;
+    }
+
+    .secondary-panel {
+        right: 0;
+        z-index: 2003;
+    }
+
+    .sidebar-content {
+        padding: 20px;
+    }
+}
+
+/* 5. Landscape Extreme (Mobile Landscape Optimization) */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+
+    /* Reverting to previous narrow sidebar for landscape */
+    .main-panel {
+        max-width: 320px !important;
+    }
+
+    .secondary-panel {
+        max-width: 320px !important;
+        right: 320px !important;
+    }
+
+    .sidebar-content {
+        padding: 15px 20px;
+    }
+
+    .sidebar-footer {
+        padding: 10px 20px;
+        min-height: 50px;
+    }
+
+    .sidebar-title {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+    }
+}

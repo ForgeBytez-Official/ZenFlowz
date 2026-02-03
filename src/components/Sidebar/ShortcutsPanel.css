@@ -1,0 +1,171 @@
+.shortcuts-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: var(--color-text-bright);
+}
+
+.shortcuts-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.shortcut-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.15, 1, 0.3, 1);
+}
+
+.shortcut-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--color-accent-1-hex);
+    transform: translateX(10px);
+}
+
+.shortcut-key-wrap {
+    min-width: 90px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.shortcut-kbd {
+    background: #1a1b23;
+    border: 3px solid var(--glass-border);
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--color-accent-1-hex);
+    text-transform: uppercase;
+}
+
+.shortcut-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.shortcut-action {
+    font-weight: 900;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.shortcut-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-dim);
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.shortcuts-footer {
+    padding: 20px 32px;
+    border-top: 1px solid var(--glass-border);
+}
+
+.shortcuts-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    opacity: 0.4;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ==========================================================================
+   4-FRAME RESPONSIVENESS
+   ========================================================================== */
+
+/* 1. TV / UltraWide (2K/4K) */
+@media screen and (min-width: 1921px) {
+    .shortcuts-list {
+        padding: 60px;
+        gap: 40px;
+    }
+
+    .shortcut-item {
+        padding: 40px;
+        border-radius: 32px;
+        gap: 30px;
+    }
+
+    .shortcut-kbd {
+        font-size: 2rem;
+        padding: 20px 40px;
+    }
+
+    .shortcut-action {
+        font-size: 1.8rem;
+    }
+
+    .shortcut-desc {
+        font-size: 1.3rem;
+    }
+}
+
+/* 3. Tablet (601px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .shortcuts-list {
+        padding: 24px;
+        gap: 16px;
+    }
+
+    .shortcut-item {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .shortcut-kbd {
+        font-size: 1rem;
+        padding: 8px 12px;
+        min-width: 80px;
+    }
+
+    .shortcut-action {
+        font-size: 0.9rem;
+    }
+}
+
+/* 4. Mobile Portrait (Below 600px) */
+@media screen and (max-width: 600px) {
+    .shortcuts-list {
+        padding: 20px;
+    }
+
+    .shortcut-kbd {
+        padding: 6px 10px;
+        min-width: 70px;
+        font-size: 0.9rem;
+    }
+}
+
+/* 5. Landscape Extreme */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .shortcuts-list {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .shortcut-item {
+        padding: 10px 15px;
+        border-radius: 12px;
+    }
+
+    .shortcut-desc {
+        display: none;
+    }
+
+    /* Focus on Action + Key in tight landscape */
+}
