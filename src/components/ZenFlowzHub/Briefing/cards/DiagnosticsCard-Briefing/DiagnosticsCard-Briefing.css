@@ -1,0 +1,153 @@
+/* --- DIAGNOSTICS V13: COHESIVE LIST --- */
+.br19-sys-readout {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.br19-sys-node {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    transition: all 0.4s ease;
+}
+
+.br19-sys-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.br19-sys-label {
+    font-size: 0.55rem;
+    font-weight: 800;
+    color: var(--color-text-ghost);
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.br19-sys-val {
+    font-size: 0.75rem;
+    font-weight: 950;
+    color: #fff;
+    font-family: var(--font-mono);
+    opacity: 0.95;
+}
+
+.br19-sys-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.br19-sys-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 10px currentColor;
+}
+
+.br19-sys-dot::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    opacity: 0.4;
+    animation: br19-sys-pulse 2s infinite ease-out;
+}
+
+@keyframes br19-sys-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+.br19-sys-dot[data-status="optimal"] {
+    color: #82C2C6;
+    background: #82C2C6;
+}
+
+.br19-sys-dot[data-status="stable"] {
+    color: #A5A9E0;
+    background: #A5A9E0;
+}
+
+.br19-sys-dot[data-status="active"] {
+    color: #E05A7E;
+    background: #E05A7E;
+}
+
+.br19-sys-dot[data-status="enhanced"] {
+    color: #D1A5E0;
+    background: #D1A5E0;
+}
+
+/* ==========================================================================
+   4-FRAME RESPONSIVENESS
+   ========================================================================== */
+
+/* 1. UltraWide */
+@media screen and (min-width: 1921px) {
+    .br19-sys-node { padding: 20px 24px; }
+    .br19-sys-val { font-size: 1.1rem; }
+    .br19-sys-label { font-size: 0.75rem; }
+}
+
+/* 2. Tablet (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+    .br19-sys-node { padding: 8px 12px; }
+}
+
+/* 3. Mobile Portrait (max-width: 600px) */
+@media screen and (max-width: 600px) {
+    .br19-sys-readout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .br19-sys-node {
+        padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        border-radius: 12px;
+    }
+
+    .br19-sys-meta {
+        gap: 1px;
+    }
+
+    .br19-sys-val {
+        font-size: 0.85rem;
+    }
+
+    .br19-sys-label {
+        font-size: 0.5rem;
+    }
+
+    .br19-sys-status {
+        width: 100%;
+        justify-content: flex-end;
+        padding-top: 4px;
+        border-top: 1px solid rgba(255, 255, 255, 0.03);
+    }
+}
+
+/* 4. Landscape Extreme */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .br19-sys-readout { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .br19-sys-node { padding: 4px 8px; border-radius: 8px; }
+}

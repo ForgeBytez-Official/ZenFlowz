@@ -1,0 +1,81 @@
+.br19-updates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.br19-updates-list::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 5px;
+    bottom: 5px;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(var(--h-rgb-1), 0.2), transparent);
+}
+
+.br19-change-node {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.015);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    position: relative;
+}
+
+.br19-change-node::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 1px;
+    background: rgba(var(--h-rgb-1), 0.3);
+}
+
+.br19-change-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--color-accent-1-hex);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.br19-change-node span {
+    font-size: 0.65rem;
+    color: var(--color-text-med);
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+/* ==========================================================================
+   4-FRAME RESPONSIVENESS
+   ========================================================================== */
+
+/* 1. UltraWide */
+@media screen and (min-width: 1921px) {
+    .br19-change-node { padding: 16px 24px; }
+    .br19-change-node span { font-size: 1rem; }
+}
+
+/* 2. Tablet (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+    .br19-change-node { padding: 8px 12px; }
+}
+
+/* 3. Mobile Portrait (max-width: 600px) */
+@media screen and (max-width: 600px) {
+    .br19-change-node span { font-size: 0.6rem; }
+}
+
+/* 4. Landscape Extreme */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .br19-updates-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .br19-change-node { padding: 6px 10px; border-radius: 8px; }
+}
+

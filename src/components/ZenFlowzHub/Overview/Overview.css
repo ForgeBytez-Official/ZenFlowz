@@ -1,0 +1,355 @@
+/* Overview Section Styles */
+
+/* Typography accents */
+/* Sage: Logic / Systems */
+.ov26-acc-1 {
+    color: var(--color-accent-1-hex);
+    font-weight: 700;
+}
+
+/* Lavender: Main Titles / Entities */
+.ov26-acc-2 {
+    color: var(--color-accent-3-hex);
+    font-weight: 700;
+}
+
+/* Berry: Interactive / Important */
+.ov26-acc-3 {
+    color: var(--color-accent-2-hex);
+    font-weight: 950;
+}
+
+.ov-v26-viewport {
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 40px;
+    /* --- FORCE TEXT CLARITY --- */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+.ov-v26-viewport::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 400px;
+    background: radial-gradient(circle at 50% 0%, rgba(var(--h-rgb-1), 0.08), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.ov-v26-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 10px;
+    grid-auto-flow: dense;
+    column-gap: 16px;
+    row-gap: 0;
+    padding-bottom: 120px;
+}
+
+/* Card architecture */
+.ov-v26-card {
+    position: relative;
+    background: rgba(10, 10, 12, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    /* --- FIXING BLURRINESS --- */
+    transform: translateZ(0); 
+    backface-visibility: hidden;
+    perspective: 1000px;
+
+    transition: 
+        background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    height: fit-content;
+    backdrop-filter: blur(16px);
+    will-change: transform, opacity;
+}
+
+.ov-v26-card {
+    cursor: default;
+}
+
+.ov-v26-card:hover {
+    background: rgba(var(--h-rgb-1), 0.08); /* Slightly more prominent background on hover */
+    border-color: rgba(var(--h-rgb-1), 0.35);
+    z-index: 10;
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(var(--h-rgb-1), 0.1);
+}
+
+.ov-v26-card.is-active {
+    border-color: rgba(var(--h-rgb-1), 0.6);
+    background: rgba(var(--h-rgb-1), 0.1);
+    box-shadow: 0 0 30px rgba(var(--h-rgb-1), 0.15);
+}
+
+/* Media layer */
+.ov26-media {
+    width: 100%;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+    height: auto;
+    max-height: 200px; /* Cap media height for better bento balance */
+}
+
+.ov26-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.85;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ov-v26-card:hover .ov26-media img {
+    transform: scale(1.08); /* Slightly more dramatic */
+}
+
+.ov26-media-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,10,12, 1) 0%, transparent 100%);
+}
+
+.ov-v26-card.no-media {
+    padding-top: 20px;
+}
+
+/* Body content */
+.ov26-body {
+    padding: 16px 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.ov26-header {
+    margin-bottom: 4px;
+}
+
+.ov26-title {
+    font-size: 1.25rem;
+    font-weight: 1000;
+    color: #fff;
+    margin: 0;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+.ov26-desc {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0;
+    transform: translateZ(0);
+}
+
+/* SUB-GRID TIGHTENED */
+.ov26-sub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 14px;
+    padding: 16px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ov26-sub-item {
+    display: flex;
+    gap: 10px;
+}
+
+.ov26-sub-dot {
+    width: 5px;
+    height: 5px;
+    background: var(--acc);
+    margin-top: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--acc);
+}
+
+.ov26-sub-txt {
+    display: flex;
+    flex-direction: column;
+}
+
+.ov26-sub-txt strong {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.2;
+    font-weight: 900;
+}
+
+.ov26-sub-txt span {
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.1;
+}
+
+/* Footer and tags */
+.ov26-footer {
+    padding: 0 20px 18px 20px;
+}
+
+.ov26-footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.ov26-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
+    margin-bottom: 12px;
+}
+
+.ov26-tag {
+    font-size: 0.55rem;
+    font-weight: 1000;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+}
+
+.ov26-patch-tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.5px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- HOVER REFINEMENT: ONLY FOR CLICKABLE RAILS --- */
+.ov-v26-card {
+    transition: 
+        background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ov-v26-card:hover .ov26-patch-tag {
+    color: #fff;
+    border-color: rgba(var(--h-rgb-1), 0.3);
+    background: rgba(var(--h-rgb-1), 0.1);
+}
+
+/* Logic / Engine / System Features */
+.ov26-tag.feature {
+    background: rgba(var(--color-accent-1-rgb), 0.08); /* Sage tint */
+    color: var(--color-accent-1-hex);
+    border-color: rgba(var(--color-accent-1-rgb), 0.2);
+}
+
+/* Interactive / Interface Components */
+.ov26-tag.component {
+    background: rgba(var(--color-accent-3-rgb), 0.08); /* Lavender tint */
+    color: var(--color-accent-3-hex);
+    border-color: rgba(var(--color-accent-3-rgb), 0.2);
+}
+
+.ov26-texture {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.ov26-grid-anchor {
+    height: 120px;
+    grid-column: 1 / -1;
+}
+
+/* Responsive Design */
+
+/* 1. UltraWide */
+@media screen and (min-width: 1921px) {
+    .ov-v26-grid {
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: 32px;
+        padding-bottom: 150px;
+    }
+
+    .ov-v26-card { border-radius: 32px; }
+    .ov26-body { padding: 32px 40px; gap: 12px; }
+    .ov26-title { font-size: 2rem; }
+    .ov26-desc { font-size: 1.15rem; }
+    .ov26-tag { font-size: 0.7rem; padding: 6px 14px; }
+}
+
+/* 2. Tablet */
+@media screen and (max-width: 1024px) {
+    .ov-v26-grid {
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 16px;
+    }
+    .ov26-body { padding: 16px 20px; }
+}
+
+/* 3. Phablet / Large Mobile (Keeping the Masonry Feel) */
+@media screen and (max-width: 768px) {
+    .ov-v26-grid {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 12px;
+    }
+    .ov-v26-card {
+        grid-column: span 1 !important; /* Forces 2-col even if width was 4 */
+    }
+}
+
+/* 4. Small Mobile Portrait (Strict Single Column) */
+@media screen and (max-width: 480px) {
+    .ov-v26-grid {
+        grid-template-columns: 1fr;
+        padding-bottom: 120px;
+    }
+
+    .ov-v26-card {
+        grid-column: 1 / -1 !important;
+        border-radius: 20px;
+        backdrop-filter: blur(8px); /* Lighter blur for performance/clarity */
+    }
+
+    .ov26-media { max-height: 180px; }
+    .ov26-body { padding: 20px; }
+    .ov26-title { font-size: 1.3rem; }
+    .ov26-desc { font-size: 0.88rem; }
+    .ov26-sub-grid { grid-template-columns: 1fr; gap: 12px; }
+    .ov26-footer { padding: 0 20px 20px 20px; }
+}
+
+/* 5. Mobile Landscape Optimizations */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .ov-v26-grid {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 8px;
+    }
+    .ov26-media { display: none; }
+    .ov26-body { padding: 12px; }
+    .ov26-title { font-size: 1rem; }
+}

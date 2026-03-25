@@ -25,7 +25,6 @@
     font-weight: 900;
     letter-spacing: -1px;
     color: var(--color-text-bright);
-    text-transform: lowercase;
     line-height: 1;
 }
 

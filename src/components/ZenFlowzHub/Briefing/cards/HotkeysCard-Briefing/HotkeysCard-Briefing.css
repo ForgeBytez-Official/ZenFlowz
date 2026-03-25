@@ -1,0 +1,85 @@
+.br19-hk-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.br19-hk-node {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.br19-hk-node kbd {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 950;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    min-width: 44px;
+    text-align: center;
+}
+
+.br19-hk-node span {
+    font-size: 0.72rem;
+    color: var(--color-text-dim);
+    font-weight: 700;
+    opacity: 0.95;
+}
+
+/* ==========================================================================
+   4-FRAME RESPONSIVENESS
+   ========================================================================== */
+
+/* 1. UltraWide */
+@media screen and (min-width: 1921px) {
+    .br19-hk-node { padding: 16px 24px; }
+    .br19-hk-node span { font-size: 1.1rem; }
+    .br19-hk-node kbd { font-size: 1rem; padding: 10px 24px; }
+}
+
+/* 2. Tablet (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+    .br19-hk-node { padding: 6px 10px; }
+}
+
+/* 3. Mobile Portrait (max-width: 600px) */
+@media screen and (max-width: 600px) {
+    .br19-hk-node {
+        padding: 8px 12px;
+        flex-direction: row; /* Ensure row layout on mobile too */
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .br19-hk-node span {
+        font-size: 0.65rem;
+        color: #fff;
+    }
+
+    .br19-hk-node kbd {
+        font-size: 0.55rem;
+        padding: 4px 10px;
+        min-width: 36px;
+        background: rgba(var(--h-rgb-1), 0.1);
+        border-color: rgba(var(--h-rgb-1), 0.2);
+    }
+}
+
+/* 4. Landscape Extreme */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .br19-hk-flow { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .br19-hk-node { padding: 4px 8px; }
+    .br19-hk-node span { font-size: 0.6rem; }
+}
+

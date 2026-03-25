@@ -1,0 +1,318 @@
+/* ZenFlowz Hub Styles */
+
+.hub-overlay-v13 {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.94);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(4px);
+}
+
+/* Section-specific background gradients */
+.hub-overlay-v13.section-briefing {
+    --h-rgb-1: 130, 194, 198; /* Sage */
+    --h-grad: radial-gradient(circle at 5% 5%, rgba(130, 194, 198, 0.12) 0%, transparent 40%),
+              radial-gradient(circle at 95% 95%, rgba(130, 194, 198, 0.08) 0%, transparent 40%);
+}
+
+.hub-overlay-v13.section-overview {
+    --h-rgb-1: 220, 80, 130;  /* Berry */
+    --h-grad: radial-gradient(circle at 50% -10%, rgba(220, 80, 130, 0.15) 0%, transparent 60%),
+              radial-gradient(circle at 10% 90%, rgba(220, 80, 130, 0.05) 0%, transparent 40%);
+}
+
+.hub-overlay-v13.section-patchNotes {
+    --h-rgb-1: 140, 130, 255; /* Lavender */
+    --h-grad: radial-gradient(circle at 90% 10%, rgba(140, 130, 255, 0.18) 0%, transparent 50%),
+              radial-gradient(circle at 20% 40%, rgba(140, 130, 255, 0.04) 0%, transparent 40%);
+}
+
+.hub-card-v13 {
+    width: 98vw;
+    height: 98vh;
+    max-width: 1540px;
+    background: #020204;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 80px 160px rgba(0, 0, 0, 0.9);
+    z-index: 100;
+}
+
+/* Background aura effects */
+.hub-card-v13::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: 
+        var(--h-grad),
+        radial-gradient(circle at 50% 50%, rgba(var(--h-rgb-1), 0.02) 0%, transparent 80%),
+        radial-gradient(circle at 100% 0%, rgba(var(--h-rgb-1), 0.04) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+    transition: all 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: background;
+}
+
+/* Header styles */
+.hub-header-v13 {
+    padding: 0 40px;
+    height: 54px; /* Significant reduction from 72px */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.005);
+    z-index: 10;
+}
+
+.hub-header-left-v13 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.hub-brand-type-v13 {
+    font-size: 0.75rem; /* Smaller & Sharper */
+    font-weight: 1000;
+    letter-spacing: 5px;
+    color: #fff;
+    opacity: 0.45;
+}
+
+.hub-version-inline-v13 {
+    cursor: pointer;
+    transform: scale(0.85);
+    transform-origin: left center;
+}
+
+/* Navigation tabs */
+.hub-nav-v13 {
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 12px;
+}
+
+.hub-tab-v13 {
+    padding: 6px 20px;
+    font-size: 0.65rem;
+    font-weight: 950;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: rgba(255, 255, 255, 0.25);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.hub-tab-v13.is-active {
+    color: #fff;
+}
+
+.hub-pill-v13 {
+    position: absolute;
+    inset: 0;
+    background: rgba(var(--h-rgb-1), 0.12);
+    border: 1px solid rgba(var(--h-rgb-1), 0.2);
+    border-radius: 8px;
+    z-index: 0;
+}
+
+/* Content area */
+.hub-stage-v13 {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.hub-stage-wrapper-v13 {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 24px 40px; 
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+/* Footer styles */
+.hub-footer-v13 {
+    height: 54px; /* Significant reduction */
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(5, 5, 8, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    z-index: 10;
+}
+
+.hub-footer-info-v13 {
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.25);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.hub-footer-info-v13 strong {
+    color: rgba(var(--h-rgb-1), 0.8); /* Reactive bolding */
+}
+
+.hub-close-v13 {
+    padding: 8px 32px; /* Smaller, high-precision button */
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 1000;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.hub-close-v13:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 12px 30px rgba(var(--h-rgb-1), 0.4);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.hub-close-v13:active {
+    transform: translateY(0) scale(0.98);
+}
+
+
+/* Responsive Design */
+
+/* 1. UltraWide (min-width: 1921px) */
+@media screen and (min-width: 1921px) {
+    .hub-card-v13 {
+        max-width: 2200px;
+        border-radius: 40px;
+    }
+
+    .hub-header-v13, .hub-footer-v13 {
+        height: 100px;
+        padding: 0 80px;
+    }
+
+    .hub-stage-wrapper-v13 {
+        padding: 80px;
+    }
+}
+
+/* 2. Tablet (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+    .hub-header-v13, .hub-footer-v13 {
+        padding: 0 32px;
+    }
+
+    .hub-stage-wrapper-v13 {
+        padding: 32px;
+    }
+}
+
+/* 3. Mobile Portrait (max-width: 600px) */
+@media screen and (max-width: 600px) {
+    .hub-card-v13 {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        border: none;
+    }
+
+    .hub-header-v13 {
+        height: auto;
+        padding: 16px 20px;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .hub-nav-v13 {
+        width: 100%;
+        display: flex;
+        justify-content: stretch; /* Stretch tabs across width */
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.02);
+        padding: 5px;
+    }
+
+    .hub-tab-v13 {
+        flex: 1; 
+        padding: 10px 4px;
+        font-size: 0.65rem;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.015);
+    }
+
+    .hub-footer-v13 {
+        height: auto;
+        padding: 16px 20px 24px 20px; /* More bottom breath for safe areas */
+        flex-direction: column-reverse;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .hub-footer-info-v13 {
+        text-align: center;
+        max-width: 280px;
+        line-height: 1.4;
+    }
+
+    .hub-stage-wrapper-v13 {
+        padding: 20px;
+    }
+
+    .hub-footer-actions-v13 {
+        width: 100%; /* Parent must expand for button to be 100% */
+        display: flex;
+        justify-content: center;
+    }
+
+    .hub-close-v13 {
+        width: 100%; 
+        max-width: 440px; /* Cap for very wide mobiles */
+        padding: 16px;
+        font-size: 0.8rem;
+        border-radius: 12px;
+        background: #fff;
+        color: #000;
+        font-weight: 1000;
+    }
+}
+
+/* 4. Landscape Extreme (Mobile Landscape) */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .hub-header-v13, .hub-footer-v13 {
+        height: 50px;
+        padding: 0 20px;
+    }
+
+    .hub-brand-type-v13 {
+        font-size: 0.6rem;
+        letter-spacing: 4px;
+    }
+
+    .hub-tab-v13 {
+        padding: 6px 12px;
+        font-size: 0.6rem;
+    }
+
+    .hub-stage-wrapper-v13 {
+        padding: 15px;
+    }
+}

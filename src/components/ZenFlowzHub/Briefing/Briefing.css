@@ -1,0 +1,219 @@
+/* Briefing Section Styles */
+
+.br-v19-viewport {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+}
+
+.br-v19-bento {
+    display: grid;
+    grid-template-columns: 1.2fr 2.8fr 1.2fr;
+    gap: 16px;
+    width: 100%;
+    align-items: start;
+}
+
+.br19-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+    width: 100%; /* Ensure columns stretch in grid */
+}
+
+/* Base card styling */
+.br19-card {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 24px;
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(40px);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    height: auto;
+    min-height: 48px;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 10px 30px rgba(0, 0, 0, 0.2);
+    will-change: transform, background-color, border-color, box-shadow;
+}
+
+.br19-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(var(--h-rgb-1), 0.03), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Card grain effect */
+.br19-card.is-compact {
+    padding: 12px 14px;
+}
+
+.br19-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.br19-card.is-clickable {
+    cursor: pointer;
+}
+
+.br19-card.is-clickable:hover {
+    background: rgba(255, 255, 255, 0.025);
+    border-color: rgba(var(--h-rgb-1), 0.3);
+    transform: translateY(-3px) scale(1.005);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 25px 60px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(var(--h-rgb-1), 0.1);
+}
+
+/* Text accent colors */
+.br19-acc-1 {
+    color: #82C2C6;
+    font-weight: 700;
+}
+
+.br19-acc-2 {
+    color: #E05A7E;
+    font-weight: 700;
+}
+
+.br19-acc-3 {
+    color: var(--color-accent-3-hex);
+    font-weight: 950;
+    text-shadow: 0 0 15px rgba(var(--h-rgb-1), 0.3);
+}
+
+.br19-loading {
+    color: #fff;
+    padding: 60px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+/* Card header styling */
+.br19-card-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 2;
+}
+
+.br19-ico {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(var(--h-rgb-1), 0.1);
+    color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(var(--h-rgb-1), 0.15);
+    border: 1px solid rgba(var(--h-rgb-1), 0.2);
+}
+
+.br19-tag {
+    display: block;
+    font-size: 0.55rem;
+    font-weight: 950;
+    letter-spacing: 4px;
+    color: rgba(var(--h-rgb-1), 0.9);
+    text-transform: none;
+    /* Softened from ALL CAPS */
+    margin-bottom: 4px;
+}
+
+/* Master Heading Manifest */
+.br19-card-head h4 {
+    font-size: 1.1rem;
+    font-weight: 900;
+    margin: 0;
+    text-transform: none;
+    /* Removed ALL CAPS */
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+    color: #fff;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+    opacity: 1;
+}
+
+/* Responsive Design */
+
+@media screen and (min-width: 1921px) {
+    .br-v19-bento {
+        gap: 24px;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .br19-card {
+        padding: 32px;
+        border-radius: 32px;
+    }
+
+    .br19-card-head h4 { font-size: 1.8rem; }
+}
+
+@media screen and (max-width: 1024px) {
+    .br-v19-bento {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .br19-col-c {
+        grid-column: 1 / span 2;
+        order: -1;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .br-v19-viewport { padding-bottom: 80px; }
+    .br-v19-bento {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .br19-card { padding: 12px; border-radius: 16px; min-height: 40px; }
+
+    .br19-col {
+        grid-column: 1 / span 1; /* Resetinherited tablet spans */
+        order: 10;
+        gap: 10px;
+    }
+
+    .br19-col.br19-col-c {
+        grid-column: 1 / span 1; /* Resetinherited tablet spans */
+        order: 1;
+    }
+}
+
+/* 4. Landscape Extreme (Mobile Landscape) */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .br-v19-bento {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .br19-col-c {
+        grid-column: 1 / span 2;
+        order: -1;
+    }
+}

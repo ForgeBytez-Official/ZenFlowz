@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import { SHORTCUTS } from '../../utils/shortcuts';
 import './ShortcutsPanel.css';
 
-export default function ShortcutsPanel({ isMobile }) {
+export default function ShortcutsPanel({ isMobile, isHighlighted }) {
     return (
-        <div className="shortcuts-panel">
+        <div className={`shortcuts-panel ${isHighlighted ? 'highlight-glow' : ''}`}>
             <div className="shortcuts-list">
                 {SHORTCUTS.map((s, i) => (
                     <motion.div

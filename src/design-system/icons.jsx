@@ -14,7 +14,32 @@ import {
     CheckCircle,
     MusicNotes,
     Keyboard,
-    Question
+    Question,
+    X,
+    TwitterLogo,
+    DiscordLogo,
+    GithubLogo,
+    InstagramLogo,
+    LinkedinLogo,
+    FacebookLogo,
+    CaretRight,
+    CalendarBlank as Calendar,
+    CloudRain,
+    Train,
+    Books,
+    Tree,
+    Waves,
+    Link,
+    YoutubeLogo,
+    TiktokLogo,
+    Shield,
+    Quotes,
+    CaretDown,
+    LockSimple,
+    CornersOut,
+    Sparkle,
+    Graph,
+    RedditLogo
 } from '@phosphor-icons/react';
 
 /* 
@@ -22,70 +47,72 @@ import {
   Powered by Phosphor Icons (Duotone) with Framer Motion for premium interactivity.
 */
 
-// Helper to create animated duotone icons
-const createIcon = (Icon, animationType = 'scale') => {
-    const MotionIcon = motion(Icon);
-
-    const variants = {
-        scale: {
-            hover: { scale: 1.15 },
-            tap: { scale: 0.9 }
-        },
-        rotate: {
-            hover: { rotate: 90, scale: 1.1 },
-            tap: { scale: 0.9 }
-        },
-        spin: {
-            hover: { rotate: -180, scale: 1.1 },
-            tap: { scale: 0.9 }
-        },
-        pulse: {
-            hover: { scale: 1.1, filter: "brightness(1.2)" },
-            tap: { scale: 0.95 }
-        },
-        shake: {
-            hover: { rotate: [0, -10, 10, -10, 0], transition: { duration: 0.5 } },
-            tap: { scale: 0.9 }
-        }
-    };
-
+// Simplified Premium Icon Wrapper
+const wrap = (Icon) => {
+    if (!Icon) return (props) => <div {...props} />;
+    const M = motion(Icon);
     return (props) => (
-        <MotionIcon
-            weight="duotone"
-            variants={variants[animationType] || variants.scale}
-            whileHover="hover"
-            whileTap="tap"
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            {...props}
+        <M 
+            weight="duotone" 
+            whileHover={{ scale: 1.1 }} 
+            whileTap={{ scale: 0.95 }} 
+            {...props} 
         />
     );
 };
 
 export const ICONS = {
-    // Pomodoro Features
     Pomodoro: {
-        Zone: createIcon(Brain, 'pulse'),
-        Breath: createIcon(Wind, 'shake'),
-        Drift: createIcon(Moon, 'pulse'),
-        Start: createIcon(Play, 'scale'),
-        Pause: createIcon(Pause, 'scale'),
-        Reset: createIcon(RotateCcw, 'spin'),
-        Quit: createIcon(XCircle, 'scale'),
-        Cheat: createIcon(Ghost, 'pulse')
+        Zone: wrap(Brain),
+        Breath: wrap(Wind),
+        Drift: wrap(Moon),
+        Start: wrap(Play),
+        Pause: wrap(Pause),
+        Reset: wrap(RotateCcw),
+        Quit: wrap(XCircle),
+        Cheat: wrap(Ghost)
     },
-
-    // Core Icons
     Core: {
-        Settings: createIcon(Settings, 'rotate'),
-        Sound: createIcon(Volume2, 'pulse'),
-        Success: createIcon(CheckCircle, 'scale'),
-        Error: createIcon(XCircle, 'scale'),
-        Ambience: createIcon(MusicNotes, 'shake')
+        Settings: wrap(Settings),
+        Sound: wrap(Volume2),
+        Success: wrap(CheckCircle),
+        Error: wrap(XCircle),
+        Ambience: wrap(MusicNotes),
+        ArrowRight: wrap(CaretRight),
+        CaretRight: wrap(CaretRight),
+        CaretDown: wrap(CaretDown),
+        Link: wrap(Link),
+        Shield: wrap(Shield),
+        Lock: wrap(LockSimple),
+        Expand: wrap(CornersOut),
+        Atmosphere: wrap(Sparkle),
+        Analytics: wrap(Graph)
     },
-
-    // Help & Shortcuts
     Help: {
-        Keyboard: createIcon(Keyboard, 'scale'),
-        Info: createIcon(Question, 'scale')
+        Keyboard: wrap(Keyboard),
+        Info: wrap(Question),
+        X: wrap(X),
+        Calendar: wrap(Calendar),
+        Quotes: wrap(Quotes)
+    },
+    Social: {
+        Instagram: wrap(InstagramLogo),
+        Twitter: wrap(TwitterLogo),
+        X: wrap(TwitterLogo),
+        GitHub: wrap(GithubLogo),
+        LinkedIn: wrap(LinkedinLogo),
+        Facebook: wrap(FacebookLogo),
+        Discord: wrap(DiscordLogo),
+        YouTube: wrap(YoutubeLogo),
+        TikTok: wrap(TiktokLogo),
+        Reddit: wrap(RedditLogo)
+    },
+    Ambience: {
+        Rain: wrap(CloudRain),
+        Train: wrap(Train),
+        Library: wrap(Books),
+        Forest: wrap(Tree),
+        Ocean: wrap(Waves)
     }
 };
+

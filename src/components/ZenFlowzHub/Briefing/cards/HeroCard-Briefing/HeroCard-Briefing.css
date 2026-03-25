@@ -1,0 +1,179 @@
+.br19-hero-aero {
+    background: rgba(255, 255, 255, 0.012);
+    border: 1px solid rgba(255, 255, 255, 0.035);
+    border-radius: 20px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+}
+
+.br19-aero-ambient {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(var(--h-rgb-1), 0.15) 0%, transparent 70%);
+    filter: blur(80px);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
+    will-change: transform, opacity;
+}
+
+.br19-aero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: relative;
+    z-index: 2;
+}
+
+.br19-aero-head {
+    text-align: center;
+}
+
+.br19-aero-title {
+    font-size: 3.2rem;
+    font-weight: 900;
+    text-transform: none; /* Removed ALL CAPS */
+    margin: 0;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    color: #fff;
+    filter: drop-shadow(0 10px 30px rgba(255, 255, 255, 0.1));
+}
+
+.br19-aero-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #fff;
+    max-width: 580px;
+    margin: 32px auto 0;
+    opacity: 0.85;
+    letter-spacing: -0.2px;
+}
+
+.br19-aero-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.br19-aero-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 32px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 24px;
+}
+
+.br19-aero-ico {
+    width: 48px;
+    height: 48px;
+    background: rgba(var(--h-rgb-1), 0.06);
+    color: var(--color-accent-1-hex);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.br19-aero-info strong {
+    display: block;
+    font-size: 0.88rem;
+    color: #fff;
+    margin-bottom: 4px;
+    letter-spacing: -0.2px;
+    font-weight: 900;
+}
+
+.br19-aero-info p {
+    font-size: 0.68rem;
+    color: var(--color-text-dim);
+    margin: 0;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+.br19-aero-principles {
+    margin-top: 12px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+}
+
+.br19-prin-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.br19-prin-node strong {
+    display: block;
+    font-size: 0.72rem;
+    color: #fff;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+}
+
+.br19-prin-node p {
+    font-size: 0.6rem;
+    color: var(--color-text-dim);
+    margin: 0;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+/* ==========================================================================
+   4-FRAME RESPONSIVENESS
+   ========================================================================== */
+
+/* 1. UltraWide (min-width: 1921px) */
+@media screen and (min-width: 1921px) {
+    .br19-aero-title { font-size: 5rem; }
+    .br19-aero-desc { font-size: 1.4rem; max-width: 800px; }
+    .br19-aero-tile { padding: 48px 32px; gap: 32px; }
+    .br19-aero-ico { width: 64px; height: 64px; }
+    .br19-aero-info strong { font-size: 1.2rem; }
+}
+
+/* 2. Tablet (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+    .br19-aero-title { font-size: 2.8rem; }
+    .br19-aero-desc { font-size: 0.95rem; margin-top: 24px; }
+    .br19-aero-grid { gap: 10px; }
+}
+
+/* 3. Mobile Portrait (max-width: 600px) */
+@media screen and (max-width: 600px) {
+    .br19-aero-content { gap: 20px; }
+    .br19-aero-title { font-size: 2rem; letter-spacing: -1px; }
+    .br19-aero-desc { font-size: 0.85rem; margin-top: 16px; line-height: 1.5; }
+    .br19-aero-grid { grid-template-columns: 1fr; gap: 8px; }
+    .br19-aero-tile { padding: 20px; flex-direction: row; text-align: left; border-radius: 16px; }
+    .br19-aero-ico { width: 40px; height: 40px; }
+    .br19-prin-grid { grid-template-columns: 1fr; }
+}
+
+/* 4. Landscape Extreme (Mobile Landscape) */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .br19-aero-content { gap: 16px; }
+    .br19-aero-title { font-size: 1.8rem; }
+    .br19-aero-desc { font-size: 0.8rem; margin-top: 8px; }
+    .br19-aero-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .br19-aero-tile { padding: 12px; gap: 12px; border-radius: 12px; }
+    .br19-aero-ico { width: 32px; height: 32px; }
+}
+
