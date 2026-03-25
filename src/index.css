@@ -245,3 +245,41 @@ body {
         bottom: 60px;
     }
 }
+
+/* ==========================================================================
+   UNIVERSAL VERSION TAGS
+   Major, Minor, Patch with consistent styling & designated accents
+   ========================================================================== */
+.v-type-tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    backdrop-filter: blur(8px);
+    border: 1px solid;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.v-major { 
+    background: rgba(var(--color-accent-1-rgb), 0.08); 
+    border-color: rgba(var(--color-accent-1-rgb), 0.25); 
+    color: var(--color-accent-1-hex); 
+}
+
+.v-minor { 
+    background: rgba(var(--color-accent-3-rgb), 0.08); 
+    border-color: rgba(var(--color-accent-3-rgb), 0.25); 
+    color: var(--color-accent-3-hex); 
+}
+
+.v-match, .v-patch { 
+    background: rgba(var(--color-accent-2-rgb), 0.08); 
+    border-color: rgba(var(--color-accent-2-rgb), 0.25); 
+    color: var(--color-accent-2-hex); 
+}

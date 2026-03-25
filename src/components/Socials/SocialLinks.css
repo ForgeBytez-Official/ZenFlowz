@@ -1,0 +1,61 @@
+/* ==========================================================================
+   REUSABLE SOCIAL LINKS
+   Premium, interactive platform buttons.
+   ========================================================================== */
+
+.social-links-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.social-link-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--color-text-med);
+    font-size: 0.85rem;
+    /* Increased as requested */
+    font-weight: 800;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.social-link-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--color-accent-1-hex);
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.social-link-item.disabled {
+    opacity: 0.4;
+    cursor: default;
+    filter: grayscale(1);
+    pointer-events: none;
+}
+
+.social-link-item span {
+    letter-spacing: 0.5px;
+}
+
+/* VARIANT: BRIEFING (Smaller, Sidebar style) */
+.social-links-container.briefing {
+    gap: 8px;
+}
+
+.social-links-container.briefing .social-link-item {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    border-radius: 8px;
+}
+
+/* VARIANT: MINIMAL (Icon only) */
+.social-links-container.minimal .social-link-item {
+    padding: 10px;
+    border-radius: 50%;
+}

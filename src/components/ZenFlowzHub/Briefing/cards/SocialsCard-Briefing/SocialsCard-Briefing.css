@@ -1,0 +1,123 @@
+.br19-social-anchor {
+    padding: 24px;
+}
+
+.br19-soc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.br19-soc-node {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.br19-soc-node.is-active:hover {
+    background: rgba(var(--h-rgb-1), 0.08);
+    border-color: var(--node-color);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.br19-soc-node.is-inactive {
+    opacity: 0.4;
+    cursor: default;
+    filter: grayscale(0.8);
+    pointer-events: none;
+}
+
+.br19-node-main {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.br19-node-ico {
+    font-size: 1.6rem;
+    color: var(--node-color);
+    filter: drop-shadow(0 0 15px var(--node-color));
+}
+
+.br19-node-meta strong {
+    font-size: 0.75rem;
+    color: #fff;
+    font-weight: 950;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+}
+
+.br19-node-meta span {
+    font-size: 0.58rem;
+    color: var(--color-text-dim);
+    font-family: var(--font-mono);
+    opacity: 0.6;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.br19-node-desc {
+    font-size: 0.6rem;
+    line-height: 1.4;
+    color: var(--color-text-dim);
+    margin: 0;
+    opacity: 0.8;
+}
+
+.br19-node-stats {
+    margin-top: 14px;
+    font-size: 0.75rem; /* Reduced to avoid overlap */
+    font-weight: 950;
+    color: var(--node-color);
+    font-family: var(--font-mono);
+    letter-spacing: -0.5px;
+    opacity: 0.9;
+}
+
+.br19-soc-node.is-inactive .br19-node-stats {
+    color: var(--color-text-dim);
+    opacity: 0.5;
+}
+
+/* ==========================================================================
+   4-FRAME RESPONSIVENESS
+   ========================================================================== */
+
+/* 1. UltraWide (min-width: 1921px) */
+@media screen and (min-width: 1921px) {
+    .br19-soc-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .br19-soc-node { padding: 32px; }
+    .br19-node-ico { font-size: 2.2rem; }
+    .br19-node-meta strong { font-size: 1.1rem; }
+}
+
+/* 2. Tablet (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+    .br19-soc-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* 3. Mobile Portrait (max-width: 600px) */
+@media screen and (max-width: 600px) {
+    .br19-soc-grid { grid-template-columns: 1fr; gap: 8px; }
+    .br19-soc-node { padding: 12px 16px; flex-direction: row; align-items: center; border-radius: 12px; }
+    .br19-node-stats { margin-top: 0; font-size: 0.8rem; flex-shrink: 0; }
+    .br19-node-main { gap: 12px; }
+    .br19-node-ico { font-size: 1.2rem; filter: none; }
+}
+
+/* 4. Landscape Extreme (Mobile Landscape) */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .br19-soc-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .br19-soc-node { padding: 10px; border-radius: 10px; }
+    .br19-node-ico { font-size: 1rem; }
+}
+

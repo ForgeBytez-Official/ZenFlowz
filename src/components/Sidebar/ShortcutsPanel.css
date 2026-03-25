@@ -3,6 +3,35 @@
     flex-direction: column;
     height: 100%;
     color: var(--color-text-bright);
+    transition: box-shadow 0.3s ease;
+}
+
+.shortcuts-panel.highlight-glow::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    box-shadow: 0 0 100px 20px rgba(123, 166, 170, 0.25);
+    z-index: -1;
+    animation: spotlight-glow 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes spotlight-glow {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    30% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.05);
+    }
 }
 
 .shortcuts-list {

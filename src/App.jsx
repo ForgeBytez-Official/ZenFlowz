@@ -8,7 +8,7 @@ import Pomodoro from './features/Pomodoro/Pomodoro';
 import DateTimeDisplay from './components/DateTimeDisplay/DateTimeDisplay';
 import BrandHeader from './components/Branding/BrandHeader';
 import VersionTag from './components/VersionTag/VersionTag';
-import ZenFlowzHub from './components/Popups/ZenFlowzHub/ZenFlowzHub';
+import ZenFlowzHub from './components/ZenFlowzHub/ZenFlowzHub';
 
 // --- INTERACTIVE ELEMENTS ---
 import Sidebar from './components/Sidebar/Sidebar';
@@ -32,10 +32,29 @@ export default function App() {
     // --- GLOBAL UI STATE ---
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
-    const [isHubOpen, setIsHubOpen] = useState(false);
+    const [isHubOpen, setIsHubOpen] = useState(true); // Open by default
+    const [highlightedSection, setHighlightedSection] = useState(null);
 
     // We sniff the screen width to decide if we need to squish things.
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
+
+    // Helper to trigger specific sections with a glow
+    const triggerHighlightSection = (sectionId) => {
+        if (sectionId === 'hotkeys') {
+            setIsHubOpen(false); // Close hub to show sidebar
+            setIsSidebarOpen(true);
+            setIsShortcutsOpen(true);
+            setHighlightedSection('hotkeys');
+
+            // Clear glow after 3s
+            setTimeout(() => setHighlightedSection(null), 3000);
+        }
+    };
+
+    // Helper to close Hub
+    const closeHub = () => {
+        setIsHubOpen(false);
+    };
 
     // Keep an eye on resize events.
     useEffect(() => {
@@ -48,7 +67,7 @@ export default function App() {
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.code === 'Escape') {
-                if (isHubOpen) setIsHubOpen(false);
+                if (isHubOpen) closeHub();
                 else if (isShortcutsOpen) setIsShortcutsOpen(false);
                 else if (isSidebarOpen) setIsSidebarOpen(false);
             }
@@ -61,6 +80,7 @@ export default function App() {
     const handleSidebarClose = () => {
         if (isShortcutsOpen) setIsShortcutsOpen(false);
         else setIsSidebarOpen(false);
+        setHighlightedSection(null);
     };
 
     const toggleSidebar = () => {
@@ -76,7 +96,8 @@ export default function App() {
                 {/* The "Hub" is the start/about screen */}
                 <ZenFlowzHub
                     isOpen={isHubOpen}
-                    onClose={() => setIsHubOpen(false)}
+                    onClose={closeHub}
+                    onHighlight={triggerHighlightSection}
                 />
 
                 {/* --- HUD (HEADS UP DISPLAY) --- */}
@@ -106,7 +127,12 @@ export default function App() {
                     title="Pomodoro Settings"
                     isSecondaryOpen={isShortcutsOpen}
                     onSecondaryClose={() => setIsShortcutsOpen(false)}
-                    secondaryContent={<ShortcutsPanel isMobile={isMobile} />}
+                    secondaryContent={
+                        <ShortcutsPanel
+                            isMobile={isMobile}
+                            isHighlighted={highlightedSection === 'hotkeys'}
+                        />
+                    }
                 >
                     <PomodoroSettings
                         onToggleShortcuts={() => setIsShortcutsOpen(!isShortcutsOpen)}

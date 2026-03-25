@@ -10,7 +10,6 @@
     pointer-events: auto;
 }
 
-.v-pill-hud,
 .s-pill-hud {
     font-family: var(--font-mono);
     font-size: 0.6rem;
@@ -23,21 +22,12 @@
     transition: all 0.3s ease;
 }
 
-.version-tag-hud:hover .v-pill-hud {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.v-pill-hud {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.2);
-}
-
-.v-pill-hud span {
-    color: var(--color-accent-1-hex);
-    margin-left: 3px;
+.version-tag-hud:hover .v-type-tag {
     filter: brightness(1.2);
+}
+
+.v-type-tag span {
+    margin-left: 3px;
 }
 
 .s-pill-hud {
@@ -59,7 +49,7 @@
         gap: 20px;
     }
 
-    .v-pill-hud,
+    .v-type-tag,
     .s-pill-hud {
         font-size: 1.1rem;
     }

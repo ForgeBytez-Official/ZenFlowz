@@ -1,0 +1,75 @@
+.br19-quote-box {
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden;
+}
+
+.br19-quote-mark {
+    font-size: 1.2rem;
+    color: var(--color-accent-3-hex);
+    line-height: 1;
+    font-family: serif;
+    opacity: 0.4;
+    margin-bottom: 4px;
+}
+
+.br19-quote-text {
+    font-size: 0.7rem;
+    color: #fff;
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 500;
+}
+
+.br19-quote-author-v15 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.v2-author-line {
+    width: 12px;
+    height: 1px;
+    background: rgba(var(--h-rgb-1), 0.3);
+}
+
+.v2-author-line + span {
+    font-size: 0.5rem;
+    font-weight: 950;
+    color: rgba(var(--h-rgb-1), 1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   4-FRAME RESPONSIVENESS
+   ========================================================================== */
+
+/* 1. UltraWide */
+@media screen and (min-width: 1921px) {
+    .br19-quote-box { padding: 24px; }
+    .br19-quote-text { font-size: 1.1rem; }
+    .br19-quote-mark { font-size: 2rem; }
+}
+
+/* 2. Tablet (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+    .br19-quote-box { padding: 10px; }
+}
+
+/* 3. Mobile Portrait (max-width: 600px) */
+@media screen and (max-width: 600px) {
+    .br19-quote-text { font-size: 0.65rem; }
+    .br19-quote-mark { font-size: 1rem; }
+}
+
+/* 4. Landscape Extreme */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .br19-quote-box { padding: 8px; }
+    .br19-quote-text { font-size: 0.6rem; }
+}
+
